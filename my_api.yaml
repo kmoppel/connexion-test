@@ -1,0 +1,36 @@
+swagger: "2.0"
+
+cosumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+
+  /arraytest:
+    get:
+      operationId: app.arraytest
+      responses:
+        200:
+          description: send back input
+      parameters:
+        - name: names
+          in: query
+          required: true
+          type: array
+          items:
+            type: string
+          collectionFormat: csv
+#          collectionFormat: multipaths:
+
+  /booltest:
+    get:
+      operationId: app.booltest
+      responses:
+        200:
+          description: send back input
+      parameters:
+        - name: mybool
+          in: query
+          required: true
+          type: boolean
