@@ -2,7 +2,7 @@ import connexion
 
 # IN
 # http :8080/arraytest names==dog,cat
-# OUT
+# OUT is invalid!
 # [
 #     "Hello d",
 #     "Hello o",
@@ -18,10 +18,18 @@ def arraytest(names):
 
 # IN
 # http :8080/booltest mybool==false
-# OUT
+# OUT is invalid!
 # [true]
 def booltest(mybool):
     return [mybool]
+
+# IN
+# http POST :8080/bodytest mybool=false names:='["i1","i2"]'
+# OUT is correct!
+def bodytest(body):
+    return body
+
+
 
 app = connexion.App(__name__, port=8080)
 app.add_api('my_api.yaml')

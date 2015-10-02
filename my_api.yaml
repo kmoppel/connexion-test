@@ -38,3 +38,30 @@ paths:
           in: query
           required: true
           type: boolean
+
+  /bodytest:
+    post:
+      operationId: app.bodytest
+      responses:
+        200:
+          description: send back input
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TestObj'
+
+definitions:
+  TestObj:
+    type: object
+    required:
+      - names
+      - mybool
+    properties:
+      names:
+        type: array
+        items:
+          type: string
+      mybool:
+        type: boolean
